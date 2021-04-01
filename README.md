@@ -37,6 +37,10 @@ Feel free to check [open issues](https://github.com/irevenko/go-nyaa/issues).
         * [sukebei](#sukebei "Goto #sukebei-")
     * [SortBy](#sortby "Goto #sortby-")
     * [Filter](#filter "Goto #filter-")
+* [TorrentComments](#torrentcomments "Goto #torrentcomments-")
+* [TorrentDescription](#torrentdescription "Goto #torrentdescription-")
+* [TorrentFiles](#torrentfiles "Goto #torrentfiles-")
+
 
 ## Search Example
 ```Search``` returns <a href="https://github.com/irevenko/go-nyaa/blob/27885a8e6b01043672b9c8866fc7ff80c837f060/types/types.go#L3">```[]Torrent```</a>
@@ -137,6 +141,76 @@ type SearchOptions struct {
 - ```no-remakes``` 
 - ```trusted-only``` 
 
+## TorrentComments
+```TorrentComments``` returns <a href="https://github.com/irevenko/go-nyaa/blob/03bee8828c28766b317229ce57ebd0aa9701c37b/types/types.go#L21">```[]Comment```</a>
+
+```go
+import ( 
+    "fmt"
+    "log"
+
+	"github.com/irevenko/go-nyaa/nyaa"
+)
+
+func main() {
+	comms, err := nyaa.TorrentComments(1366002, "nyaa")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for _, v := range comms {
+		fmt.Println("user: " + v.User)
+		fmt.Println("at: " + v.Date)
+		fmt.Println("text: " + v.Text)
+		fmt.Println()
+	}
+}
+```
+
+## TorrentDescription
+```TorrentDescription``` returns ```string```
+
+```go
+import ( 
+    "fmt"
+    "log"
+
+	"github.com/irevenko/go-nyaa/nyaa"
+)
+
+func main() {
+	desc, err := nyaa.TorrentDescription(1366002, "nyaa")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+    fmt.Println(desc)
+}
+```
+
+## TorrentFiles
+```TorrentFiles``` returns ```[]string```
+
+```go
+import ( 
+    "fmt"
+    "log"
+
+	"github.com/irevenko/go-nyaa/nyaa"
+)
+
+func main() {
+	files, err := nyaa.TorrentFiles(1366002, "nyaa")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for _, v := range files {
+        fmt.Println(v)
+	}
+}
+```
+
 # Notes
 - Pagination does not work with RSS
 - Ascending sort does not work with RSS
@@ -154,7 +228,6 @@ type SearchOptions struct {
 - [x] Add sukebei.nyaa.si support
 - [x] Scrap full description, comments, file list from nyaa.si/view/...
 - [ ] Add _examples
-- [ ] Docs for torrent_...
 
 # What I Learned 🧠
 - RSS Feed, xml
