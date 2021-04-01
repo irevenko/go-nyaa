@@ -17,3 +17,9 @@ type Torrent struct {
 	CategoryID  string
 	InfoHash    string
 }
+
+type Comment struct {
+	User string
+	Date string
+	Text string
+}

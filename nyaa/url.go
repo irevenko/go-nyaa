@@ -5,6 +5,8 @@ import "fmt"
 const (
 	nyaaBaseURL    = "https://nyaa.si/?page=rss&q=+"
 	sukebeiBaseURL = "https://sukebei.nyaa.si/?page=rss&q=+"
+	nyaaView       = "https://nyaa.si/view/"
+	sukebeiView    = "https://sukebei.nyaa.si/view/"
 
 	sortByComments  = "&s=comments&o=desc"
 	sortBySeeders   = "&s=seeders&o=desc"
@@ -65,10 +67,10 @@ func buildURL(opts SearchOptions) (string, error) {
 
 	if opts.Provider == "nyaa" {
 		url = nyaaBaseURL
-	} else if opts.Provider == "sukebe" {
+	} else if opts.Provider == "sukebei" {
 		url = sukebeiBaseURL
 	} else {
-		err := fmt.Errorf("provider option is required\nsee docs: https://github.com/irevenko/go-nyaa#provider")
+		err := fmt.Errorf("provider option could be nyaa or sukebei\nsee docs: https://github.com/irevenko/go-nyaa#provider")
 		return "", err
 	}
 
@@ -134,7 +136,7 @@ func buildURL(opts SearchOptions) (string, error) {
 		}
 	}
 
-	if opts.Provider == "sukebe" {
+	if opts.Provider == "sukebei" {
 		if opts.Category != "" {
 			switch opts.Category {
 			case "all":
@@ -158,7 +160,7 @@ func buildURL(opts SearchOptions) (string, error) {
 			case "real-life-videos":
 				url += categoryRealLifeVideos
 			default:
-				err := fmt.Errorf("such sukebe category option does not exitst\nsee docs: https://github.com/irevenko/go-nyaa#category")
+				err := fmt.Errorf("such sukebei category option does not exitst\nsee docs: https://github.com/irevenko/go-nyaa#category")
 				return "", err
 			}
 		}

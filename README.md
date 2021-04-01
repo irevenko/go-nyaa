@@ -4,24 +4,42 @@
 
 > nyaa.si client library for Go
 
-<p align="center"><img src="https://avatars.githubusercontent.com/u/28658394?s=200&v=4"></p>
+<p align="center">
+<a href="https://github.com/nyaadevs">
+<img src="https://avatars.githubusercontent.com/u/28658394?s=200&v=4">
+</a>
+</p>
 
-<p align="center">Built on top of <a href="https://github.com/mmcdole/gofeed">gofeed</a>
+<p align="center">Built on top of <br>
+<a href="https://github.com/mmcdole/gofeed">gofeed</a> - search using RSS <br>
+<a href="https://github.com/gocolly/colly">colly</a> - scrap torrent details page
+
 <p align="center">Original idea <a href="https://github.com/ejnshtein/nyaa-api">ejnshtein/nyaa-api</a></p>
 
 
 # Installation 🔨
 ```go get github.com/mmcdole/gofeed``` <br>
-```go get github.com/irevenko/go-nyaa```
+```go get github.com/gocolly/colly``` <br>
+```go get -u github.com/irevenko/go-nyaa```
 
 # Contributing 🤝
 Contributions, issues and feature requests are welcome! 👍 <br>
 Feel free to check [open issues](https://github.com/irevenko/go-nyaa/issues).
 
-# Docs 📋
+# Docs 📒
 <a href="https://pkg.go.dev/github.com/irevenko/go-nyaa">Go reference</a>
+* [Search Example](#search-example- "Goto #search-example-")
+* [Search Options](#search-options- "Goto #search-options-")
+    * [Provider](#provider- "Goto #provider-")
+    * [Query](#query- "Goto #query-")
+    * [Category](#category- "Goto #category-")
+        * [nyaa](#nyaa- "Goto #nyaa-")
+        * [sukebei](#sukebei- "Goto #sukebei-")
+    * [SortBy](#sortby- "Goto #sortby-")
+    * [Filter](#filter- "Goto #filter-")
 
 ## Search Example
+```Search``` returns <a href="https://github.com/irevenko/go-nyaa/blob/27885a8e6b01043672b9c8866fc7ff80c837f060/types/types.go#L3">```[]Torrent```</a>
 
 ```go
 import ( 
@@ -49,7 +67,7 @@ func main() {
 }
 ```
 
-## SearchOptions
+## Search Options
 ```go
 type SearchOptions struct {
     Provider string
@@ -62,13 +80,13 @@ type SearchOptions struct {
 
 ## Provider
 - ```nyaa``` - nyaa.si
-- ```sukebe``` - sukebe.nyaa.si
+- ```sukebei``` - sukebei.nyaa.si
 
 ## Query
 - your desired search string
 
 ## Category
-### nya
+### nyaa
 * ```all``` - All Categories
 * ```anime``` - All Anime
     * ```anime-amv``` 
@@ -94,7 +112,7 @@ type SearchOptions struct {
     * ```software-apps``` 
     * ```software-games```
 
-### sukebe
+### sukebei
 * ```all``` - All Categories
 * ```art``` - All Art
     * ```art-anime``` 
@@ -134,10 +152,13 @@ type SearchOptions struct {
 - [x] Search Pictures
 - [x] Search Software
 - [x] Add sukebei.nyaa.si support
-- [ ] Scrap full description, comments, file list from nyaa.si/view/...
+- [x] Scrap full description, comments, file list from nyaa.si/view/...
+- [ ] Add _examples
+- [ ] Docs for torrent_...
 
 # What I Learned 🧠
 - RSS Feed, xml
+- Parsing html in Go
 
 # License 📑 
 (c) 2021 Ilya Revenko. [MIT License](https://tldrlegal.com/license/mit-license)
