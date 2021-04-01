@@ -6,6 +6,7 @@ import (
 )
 
 type SearchOptions struct {
+	Provider string
 	Query    string
 	Category string
 	SortBy   string

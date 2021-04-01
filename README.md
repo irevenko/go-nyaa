@@ -33,6 +33,7 @@ import (
 
 func main() {
     opt := nyaa.SearchOptions{
+        Provider: "nyaa",
         Query:    "LN",
         Category: "literature",
         SortBy:   "seeders",
@@ -51,16 +52,23 @@ func main() {
 ## SearchOptions
 ```go
 type SearchOptions struct {
+    Provider string
 	Query    string
 	Category string
 	SortBy   string
 	Filter   string
 }
 ```
+
+## Provider
+- ```nyaa``` - nyaa.si
+- ```sukebe``` - sukebe.nyaa.si
+
 ## Query
 - your desired search string
 
 ## Category
+### nya
 * ```all``` - All Categories
 * ```anime``` - All Anime
     * ```anime-amv``` 
@@ -86,6 +94,18 @@ type SearchOptions struct {
     * ```software-apps``` 
     * ```software-games```
 
+### sukebe
+* ```all``` - All Categories
+* ```art``` - All Art
+    * ```art-anime``` 
+    * ```art-doujinshi```
+    * ```art-manga```
+    * ```anime-games```
+    * ```anime-pictures```
+* ```real-life``` - All Real Life
+    * ```real-life-photos``` 
+    * ```real-life-videos```
+
 ## SortBy
 - ```comments```
 - ```downloads``` 
@@ -98,7 +118,6 @@ type SearchOptions struct {
 - ```no-filter```
 - ```no-remakes``` 
 - ```trusted-only``` 
-
 
 # Notes
 - Pagination does not work with RSS
@@ -114,8 +133,8 @@ type SearchOptions struct {
 - [x] Search Live Action
 - [x] Search Pictures
 - [x] Search Software
-- [ ] Add sukebei.nyaa.si support
-- [ ] Scrap full description and comments from nyaa.si/view/...
+- [x] Add sukebei.nyaa.si support
+- [ ] Scrap full description, comments, file list from nyaa.si/view/...
 
 # What I Learned 🧠
 - RSS Feed, xml

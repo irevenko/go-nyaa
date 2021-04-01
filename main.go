@@ -9,9 +9,7 @@ import (
 
 func main() {
 	opt := nyaa.SearchOptions{
-		Query:    "haikyuu",
-		Category: "live-action",
-		SortBy:   "seeders",
+		Provider: "nyaa",
 	}
 
 	torrents, err := nyaa.Search(opt)
@@ -19,5 +17,10 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fmt.Println(torrents[0])
+	fmt.Println(torrents[0].Name)
+	fmt.Println(torrents[1].Name)
+	fmt.Println(torrents[2].Name)
+	fmt.Println(torrents[3].Name)
+	fmt.Println(torrents[4].Name)
+
 }
