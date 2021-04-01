@@ -6,15 +6,17 @@ import (
 )
 
 type SearchOptions struct {
-	SortBy string
-	Filter string
+	Query    string
+	Category string
+	SortBy   string
+	Filter   string
 }
 
 var (
 	fp = gofeed.NewParser()
 )
 
-func SearchAll(opts SearchOptions) ([]t.Torrent, error) {
+func Search(opts SearchOptions) ([]t.Torrent, error) {
 	url, err := buildURL(opts)
 	if err != nil {
 		return nil, err

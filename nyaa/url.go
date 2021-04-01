@@ -6,19 +6,52 @@ const (
 	baseURL         = "https://nyaa.si/?page=rss&q=+"
 	sortByComments  = "&s=comments&o=desc"
 	sortBySeeders   = "&s=seeders&o=desc"
-	sortByLeechers  = "&s=leechers&o=asc"
+	sortByLeechers  = "&s=leechers&o=desc"
 	sortByDownloads = "&s=downloads&o=desc"
-	sortBySizeDesc  = "&s=size&o=desc"
-	sortBySizeAsc   = "&s=size&o=asc"
-	sortByDateDesc  = "&s=id&o=desc"
-	sortByDateAsc   = "&s=id&o=asc"
+	sortBySize      = "&s=size&o=desc"
+	sortByDate      = "&s=id&o=desc"
 
+	filterNoFilters   = "&f=0"
 	filterNoRemakes   = "&f=1"
 	filterTrustedOnly = "&f=2"
+
+	categoryAll        = "&c=0_0"
+	categoryAnime      = "&c=1_0"
+	categoryAudio      = "&c=2_0"
+	categoryLiterature = "&c=3_0"
+	categoryLiveAction = "&c=4_0"
+	categoryPictures   = "&c=5_0"
+	categorySoftware   = "&c=6_0"
 )
 
 func buildURL(opts SearchOptions) (string, error) {
 	url := baseURL
+
+	if opts.Query != "" {
+		url += opts.Query
+	}
+
+	if opts.Category != "" {
+		switch opts.Category {
+		case "all":
+			url += categoryAll
+		case "anime":
+			url += categoryAnime
+		case "audio":
+			url += categoryAudio
+		case "literature":
+			url += categoryLiterature
+		case "live-action":
+			url += categoryLiveAction
+		case "pictures":
+			url += categoryPictures
+		case "software":
+			url += categorySoftware
+		default:
+			err := fmt.Errorf("such category option does not exitst\nsee docs: https://github.com/irevenko/go-nyaa")
+			return "", err
+		}
+	}
 
 	if opts.SortBy != "" {
 		switch opts.SortBy {
@@ -30,14 +63,10 @@ func buildURL(opts SearchOptions) (string, error) {
 			url += sortBySeeders
 		case "leechers":
 			url += sortByLeechers
-		case "size-asc":
-			url += sortBySizeAsc
-		case "size-desc":
-			url += sortBySizeDesc
-		case "date-asc":
-			url += sortByDateAsc
-		case "date-desc":
-			url += sortByDateDesc
+		case "size":
+			url += sortBySize
+		case "date":
+			url += sortByDate
 		default:
 			err := fmt.Errorf("such sort option does not exitst\nsee docs: https://github.com/irevenko/go-nyaa")
 			return "", err
@@ -46,6 +75,8 @@ func buildURL(opts SearchOptions) (string, error) {
 
 	if opts.Filter != "" {
 		switch opts.Filter {
+		case "no-filters":
+			url += filterNoFilters
 		case "no-remakes":
 			url += filterNoRemakes
 		case "trusted-only":
