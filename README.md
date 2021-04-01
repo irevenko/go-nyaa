@@ -27,7 +27,8 @@ Contributions, issues and feature requests are welcome! 👍 <br>
 Feel free to check [open issues](https://github.com/irevenko/go-nyaa/issues).
 
 # Docs 📒
-<a href="https://pkg.go.dev/github.com/irevenko/go-nyaa">Go reference</a>
+<a href="https://pkg.go.dev/github.com/irevenko/go-nyaa">Go reference</a>, 
+<a href="https://github.com/irevenko/tsukae/tree/main/cmd">Examples</a>
 * [Search Example](#search-example "Goto #search-example-")
 * [Search Options](#search-options "Goto #search-options-")
     * [Provider](#provider "Goto #provider-")
@@ -55,7 +56,7 @@ import (
 
 func main() {
     opt := nyaa.SearchOptions{
-        Provider: "nyaa",
+        Provider: "nyaa", // Provider is the only required option
         Query:    "LN",
         Category: "literature",
         SortBy:   "seeders",
