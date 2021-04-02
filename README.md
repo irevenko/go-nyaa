@@ -26,7 +26,7 @@ Feel free to check [open issues](https://github.com/irevenko/go-nyaa/issues).
 
 # Docs 📒
 <a href="https://pkg.go.dev/github.com/irevenko/go-nyaa">Go reference</a>, 
-<a href="https://github.com/irevenko/tsukae/tree/main/cmd">Examples</a>
+<a href="https://github.com/irevenko/go-nyaa/tree/main/_examples">Examples</a>
 * [Search Example](#search-example "Goto #search-example-")
 * [Search Options](#search-options "Goto #search-options-")
     * [Provider](#provider "Goto #provider-")
