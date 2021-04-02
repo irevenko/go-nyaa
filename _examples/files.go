@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	files, err := nyaa.TorrentFiles(932413, "nyaa")
+	files, err := nyaa.TorrentFiles("https://nyaa.si/view/932413")
 	if err != nil {
 		log.Fatal(err)
 	}

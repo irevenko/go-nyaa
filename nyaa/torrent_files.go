@@ -1,13 +1,10 @@
 package nyaa
 
 import (
-	"fmt"
-	"strconv"
-
 	"github.com/gocolly/colly"
 )
 
-func TorrentFiles(id int, provider string) ([]string, error) {
+func TorrentFiles(viewURL string) ([]string, error) {
 	var folders []string
 	var files []string
 
@@ -29,14 +26,7 @@ func TorrentFiles(id int, provider string) ([]string, error) {
 		return nil, e
 	}
 
-	if provider == "nyaa" {
-		c.Visit(nyaaView + strconv.Itoa(id))
-	} else if provider == "sukebei" {
-		c.Visit(sukebeiView + strconv.Itoa(id))
-	} else {
-		err := fmt.Errorf("provider param could be nyaa or sukebei\nsee docs: https://github.com/irevenko/go-nyaa#provider")
-		return nil, err
-	}
+	c.Visit(viewURL)
 
 	if len(folders) == 0 {
 		return files, nil

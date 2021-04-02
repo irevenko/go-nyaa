@@ -1,14 +1,11 @@
 package nyaa
 
 import (
-	"fmt"
-	"strconv"
-
 	"github.com/gocolly/colly"
 	t "github.com/irevenko/go-nyaa/types"
 )
 
-func TorrentComments(id int, provider string) ([]t.Comment, error) {
+func TorrentComments(viewURL string) ([]t.Comment, error) {
 	var comments []t.Comment
 
 	c := colly.NewCollector()
@@ -29,14 +26,7 @@ func TorrentComments(id int, provider string) ([]t.Comment, error) {
 		return nil, e
 	}
 
-	if provider == "nyaa" {
-		c.Visit(nyaaView + strconv.Itoa(id))
-	} else if provider == "sukebei" {
-		c.Visit(sukebeiView + strconv.Itoa(id))
-	} else {
-		err := fmt.Errorf("provider param could be nyaa or sukebei\nsee docs: https://github.com/irevenko/go-nyaa#provider")
-		return nil, err
-	}
+	c.Visit(viewURL)
 
 	return comments, nil
 }

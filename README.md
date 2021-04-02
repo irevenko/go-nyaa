@@ -1,20 +1,18 @@
 # 🐈📦 go-nyaa
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/irevenko/go-nyaa.svg)](https://pkg.go.dev/github.com/irevenko/go-nyaa)
+[![Go Report Card](https://goreportcard.com/badge/github.com/irevenko/go-nyaa)](https://goreportcard.com/report/github.com/irevenko/go-nyaa)
 
 > nyaa.si client library for Go
 
-<p align="center">
 <a href="https://github.com/nyaadevs">
 <img src="https://avatars.githubusercontent.com/u/28658394?s=200&v=4">
 </a>
-</p>
 
-<p align="center">Built on top of <br>
+Built on top of:<br>
 <a href="https://github.com/mmcdole/gofeed">gofeed</a> - search using RSS <br>
-<a href="https://github.com/gocolly/colly">colly</a> - scrap torrent details page
-
-<p align="center">Original idea <a href="https://github.com/ejnshtein/nyaa-api">ejnshtein/nyaa-api</a></p>
+<a href="https://github.com/gocolly/colly">colly</a> - scrap torrent details page <br> <br>
+Original idea: <br> <a href="https://github.com/ejnshtein/nyaa-api">ejnshtein/nyaa-api</a>
 
 
 # Installation 🔨
@@ -154,7 +152,7 @@ import (
 )
 
 func main() {
-	comms, err := nyaa.TorrentComments(1366002, "nyaa")
+	comms, err := nyaa.TorrentComments("https://nyaa.si/view/1366002") // nyaa.si or sukebei.nyaa.si
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -180,7 +178,7 @@ import (
 )
 
 func main() {
-	desc, err := nyaa.TorrentDescription(1366002, "nyaa")
+	desc, err := nyaa.TorrentDescription("https://nyaa.si/view/1366002") // nyaa.si or sukebei.nyaa.si
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -201,7 +199,7 @@ import (
 )
 
 func main() {
-	files, err := nyaa.TorrentFiles(1366002, "nyaa")
+	files, err := nyaa.TorrentFiles("https://nyaa.si/view/1366002") // nyaa.si or sukebei.nyaa.si
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -216,19 +214,11 @@ func main() {
 - Pagination does not work with RSS
 - Ascending sort does not work with RSS
 
-# ToDo
-- [x] Sort by comments, size, date, seeders, leechers, downloads
-- [x] Filter: No filter, No remakes, Trusted only 
-- [x] Search All
-- [x] Search Anime
-- [x] Search Literature
-- [x] Search Audio
-- [x] Search Live Action
-- [x] Search Pictures
-- [x] Search Software
-- [x] Add sukebei.nyaa.si support
-- [x] Scrap full description, comments, file list from nyaa.si/view/...
-- [ ] Add _examples
+# Quick Start 🚀
+```git clone https://github.com/irevenko/go-nyaa.git``` <br>
+```cd go-nyaa``` <br>
+```go get -d ./...``` <br>
+```go run _examples/nyaa_search.go``` <br>
 
 # What I Learned 🧠
 - RSS Feed, xml

@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	comms, err := nyaa.TorrentComments(989795, "nyaa")
+	comms, err := nyaa.TorrentComments("https://sukebei.nyaa.si/view/3253887")
 	if err != nil {
 		log.Fatal(err)
 	}
