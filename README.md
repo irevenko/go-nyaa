@@ -46,8 +46,8 @@ Feel free to check [open issues](https://github.com/irevenko/go-nyaa/issues).
 
 ```go
 import ( 
-    "fmt"
-    "log"
+	"fmt"
+	"log"
 
 	"github.com/irevenko/go-nyaa/nyaa"
 )
@@ -73,7 +73,7 @@ func main() {
 ## Search Options
 ```go
 type SearchOptions struct {
-    Provider string
+	Provider string
 	Query    string
 	Category string
 	SortBy   string
@@ -145,9 +145,9 @@ type SearchOptions struct {
 
 ```go
 import ( 
-    "fmt"
-    "log"
-
+	"fmt"
+	"log"
+	
 	"github.com/irevenko/go-nyaa/nyaa"
 )
 
@@ -171,8 +171,8 @@ func main() {
 
 ```go
 import ( 
-    "fmt"
-    "log"
+	"fmt"
+	"log"
 
 	"github.com/irevenko/go-nyaa/nyaa"
 )
@@ -183,7 +183,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-    fmt.Println(desc)
+   	fmt.Println(desc)
 }
 ```
 
@@ -192,8 +192,8 @@ func main() {
 
 ```go
 import ( 
-    "fmt"
-    "log"
+	"fmt"
+	"log"
 
 	"github.com/irevenko/go-nyaa/nyaa"
 )
@@ -205,7 +205,7 @@ func main() {
 	}
 
 	for _, v := range files {
-        fmt.Println(v)
+		fmt.Println(v)
 	}
 }
 ```
