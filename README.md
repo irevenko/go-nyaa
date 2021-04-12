@@ -121,8 +121,8 @@ type SearchOptions struct {
     * ```art-anime``` 
     * ```art-doujinshi```
     * ```art-manga```
-    * ```anime-games```
-    * ```anime-pictures```
+    * ```art-games```
+    * ```art-pictures```
 * ```real-life``` - All Real Life
     * ```real-life-photos``` 
     * ```real-life-videos```
