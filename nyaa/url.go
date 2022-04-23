@@ -8,12 +8,15 @@ const (
 	nyaaView       = "https://nyaa.si/view/"
 	sukebeiView    = "https://sukebei.nyaa.si/view/"
 
-	sortByComments  = "&s=comments&o=desc"
-	sortBySeeders   = "&s=seeders&o=desc"
-	sortByLeechers  = "&s=leechers&o=desc"
-	sortByDownloads = "&s=downloads&o=desc"
-	sortBySize      = "&s=size&o=desc"
-	sortByDate      = "&s=id&o=desc"
+	sortByComments  = "&s=comments"
+	sortBySeeders   = "&s=seeders"
+	sortByLeechers  = "&s=leechers"
+	sortByDownloads = "&s=downloads"
+	sortBySize      = "&s=size"
+	sortByDate      = "&s=id"
+
+	orderByAsc  = "&o=asc"
+	orderByDesc = "&o=desc"
 
 	filterNoFilter    = "&f=0"
 	filterNoRemakes   = "&f=1"
@@ -184,6 +187,16 @@ func buildURL(opts SearchOptions) (string, error) {
 			err := fmt.Errorf("such sort option does not exitst\nsee docs: https://github.com/irevenko/go-nyaa#sortby")
 			return "", err
 		}
+	}
+
+	switch opts.OrderBy {
+	case "desc", "":
+		url += orderByDesc
+	case "asc":
+		url += orderByAsc
+	default:
+		err := fmt.Errorf("such order option does not exitst\nsee docs: https://github.com/irevenko/go-nyaa#sortby")
+		return "", err
 	}
 
 	if opts.Filter != "" {

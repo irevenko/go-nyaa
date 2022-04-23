@@ -10,6 +10,7 @@ type SearchOptions struct {
 	Query    string
 	Category string
 	SortBy   string
+	OrderBy  string
 	Filter   string
 }
 

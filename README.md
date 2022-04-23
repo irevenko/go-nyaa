@@ -35,6 +35,7 @@ Feel free to check [open issues](https://github.com/irevenko/go-nyaa/issues).
         * [nyaa](#nyaa "Goto #nyaa-")
         * [sukebei](#sukebei "Goto #sukebei-")
     * [SortBy](#sortby "Goto #sortby-")
+    * [OrderBy](#orderby "Goto #orderby-")
     * [Filter](#filter "Goto #filter-")
 * [TorrentComments](#torrentcomments "Goto #torrentcomments-")
 * [TorrentDescription](#torrentdescription "Goto #torrentdescription-")
@@ -58,6 +59,7 @@ func main() {
         Query:    "LN",
         Category: "literature",
         SortBy:   "seeders",
+        OrderBy:  "desc",
         Filter:   "trusted-only",
     }
 
@@ -77,6 +79,7 @@ type SearchOptions struct {
 	Query    string
 	Category string
 	SortBy   string
+	OrderBy  string
 	Filter   string
 }
 ```
@@ -134,6 +137,10 @@ type SearchOptions struct {
 - ```seeders``` 
 - ```leechers```
 - ```size``` 
+
+## OrderBy
+- ```desc```
+- ```asc```
 
 ## Filter
 - ```no-filter```
